@@ -65,12 +65,6 @@ const colorDiv = document.getElementById('color');
 colorDiv.style = `
 font-weight: bold;
 color: ${colorScheme[0]};
-cursor: pointer;
 `;
 
 colorDiv.textContent = rgbToName(rgbStringToArray(colorScheme[0]));
-
-colorDiv.onclick = () => {
-  clearApp();
-  init(generateColorScheme(randomColor));
-}
