@@ -4,7 +4,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
  
-async function main() { 
+async function returnSchema() { 
   const assistant = await openai.beta.assistants.create({
     name: "Color Scheme Generator",
     instructions: "Take a color or mood and return a color scheme in JSON format that represents the input well. Provide some information about why each color was picked as well",
@@ -16,7 +16,7 @@ const message = await openai.beta.threads.messages.create(
     thread.id,
     {
       role: "user",
-      content: "fascinating"
+      content: process.argv[2]
     }
   );
 
@@ -47,5 +47,5 @@ const run = openai.beta.threads.runs.stream(thread.id, {
     });
 }
  
-main();
+returnSchema();
 
